@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: ./web
+      additional_contexts:
+        docker: ./docker
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    restart: unless-stopped
+
+  mobile-web:
+    build:
+      context: ./mobile
+      additional_contexts:
+        docker: ./docker
+    ports:
+      - "${MOBILE_WEB_PORT:-8090}:8080"
+    restart: unless-stopped
